@@ -2534,10 +2534,12 @@ SYSCALL(uptime)
      e7a:	b8 0e 00 00 00       	mov    $0xe,%eax
      e7f:	cd 40                	int    $0x40
      e81:	c3                   	ret    
-     e82:	66 90                	xchg   %ax,%ax
-     e84:	66 90                	xchg   %ax,%ax
-     e86:	66 90                	xchg   %ax,%ax
-     e88:	66 90                	xchg   %ax,%ax
+
+00000e82 <kc>:
+SYSCALL(kc)
+     e82:	b8 16 00 00 00       	mov    $0x16,%eax
+     e87:	cd 40                	int    $0x40
+     e89:	c3                   	ret    
      e8a:	66 90                	xchg   %ax,%ax
      e8c:	66 90                	xchg   %ax,%ax
      e8e:	66 90                	xchg   %ax,%ax

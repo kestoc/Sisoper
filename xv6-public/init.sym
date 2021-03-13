@@ -15,7 +15,7 @@
 00000000 ulib.c
 00000000 printf.c
 000003e0 printint
-0000083d digits.1030
+0000083d digits.1032
 00000000 umalloc.c
 00000abc freep
 00000ac0 base
@@ -31,6 +31,7 @@
 000003c2 sleep
 00000342 pipe
 00000352 write
+000003d2 kc
 0000038a fstat
 00000362 kill
 000003a2 chdir

@@ -1165,10 +1165,12 @@ SYSCALL(uptime)
  5ca:	b8 0e 00 00 00       	mov    $0xe,%eax
  5cf:	cd 40                	int    $0x40
  5d1:	c3                   	ret    
- 5d2:	66 90                	xchg   %ax,%ax
- 5d4:	66 90                	xchg   %ax,%ax
- 5d6:	66 90                	xchg   %ax,%ax
- 5d8:	66 90                	xchg   %ax,%ax
+
+000005d2 <kc>:
+SYSCALL(kc)
+ 5d2:	b8 16 00 00 00       	mov    $0x16,%eax
+ 5d7:	cd 40                	int    $0x40
+ 5d9:	c3                   	ret    
  5da:	66 90                	xchg   %ax,%ax
  5dc:	66 90                	xchg   %ax,%ax
  5de:	66 90                	xchg   %ax,%ax

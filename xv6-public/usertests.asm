@@ -8703,10 +8703,12 @@ SYSCALL(uptime)
     3d3a:	b8 0e 00 00 00       	mov    $0xe,%eax
     3d3f:	cd 40                	int    $0x40
     3d41:	c3                   	ret    
-    3d42:	66 90                	xchg   %ax,%ax
-    3d44:	66 90                	xchg   %ax,%ax
-    3d46:	66 90                	xchg   %ax,%ax
-    3d48:	66 90                	xchg   %ax,%ax
+
+00003d42 <kc>:
+SYSCALL(kc)
+    3d42:	b8 16 00 00 00       	mov    $0x16,%eax
+    3d47:	cd 40                	int    $0x40
+    3d49:	c3                   	ret    
     3d4a:	66 90                	xchg   %ax,%ax
     3d4c:	66 90                	xchg   %ax,%ax
     3d4e:	66 90                	xchg   %ax,%ax

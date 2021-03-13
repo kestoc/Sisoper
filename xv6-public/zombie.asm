@@ -654,10 +654,12 @@ SYSCALL(uptime)
  2ea:	b8 0e 00 00 00       	mov    $0xe,%eax
  2ef:	cd 40                	int    $0x40
  2f1:	c3                   	ret    
- 2f2:	66 90                	xchg   %ax,%ax
- 2f4:	66 90                	xchg   %ax,%ax
- 2f6:	66 90                	xchg   %ax,%ax
- 2f8:	66 90                	xchg   %ax,%ax
+
+000002f2 <kc>:
+SYSCALL(kc)
+ 2f2:	b8 16 00 00 00       	mov    $0x16,%eax
+ 2f7:	cd 40                	int    $0x40
+ 2f9:	c3                   	ret    
  2fa:	66 90                	xchg   %ax,%ax
  2fc:	66 90                	xchg   %ax,%ax
  2fe:	66 90                	xchg   %ax,%ax

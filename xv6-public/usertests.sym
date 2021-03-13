@@ -12,11 +12,11 @@
 00000000 .debug_loc
 00000000 .debug_ranges
 00000000 usertests.c
-00006200 args.1394
+00006200 args.1396
 00000000 ulib.c
 00000000 printf.c
 00003d50 printint
-000058f7 digits.1030
+000058f7 digits.1032
 00000000 umalloc.c
 00006280 freep
 00006284 base
@@ -48,6 +48,7 @@
 00002c80 dirfile
 00003cc2 write
 000035d0 bsstest
+00003d42 kc
 000061d8 echoargv
 00003cfa fstat
 00003cd2 kill

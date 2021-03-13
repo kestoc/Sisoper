@@ -71,7 +71,7 @@ forktest(void)
   int n, pid;
 
   printf(1, "fork test\n");
-  49:	c7 44 24 04 e4 03 00 	movl   $0x3e4,0x4(%esp)
+  49:	c7 44 24 04 ec 03 00 	movl   $0x3ec,0x4(%esp)
   50:	00 
   51:	c7 04 24 01 00 00 00 	movl   $0x1,(%esp)
   58:	e8 b3 ff ff ff       	call   10 <printf>
@@ -137,7 +137,7 @@ forktest(void)
   }
 
   printf(1, "fork test OK\n");
-  a2:	c7 44 24 04 16 04 00 	movl   $0x416,0x4(%esp)
+  a2:	c7 44 24 04 1e 04 00 	movl   $0x41e,0x4(%esp)
   a9:	00 
   aa:	c7 04 24 01 00 00 00 	movl   $0x1,(%esp)
   b1:	e8 5a ff ff ff       	call   10 <printf>
@@ -153,9 +153,9 @@ void
 printf(int fd, const char *s, ...)
 {
   write(fd, s, strlen(s));
-  c0:	c7 04 24 24 04 00 00 	movl   $0x424,(%esp)
+  c0:	c7 04 24 2c 04 00 00 	movl   $0x42c,(%esp)
   c7:	e8 d4 00 00 00       	call   1a0 <strlen>
-  cc:	c7 44 24 04 24 04 00 	movl   $0x424,0x4(%esp)
+  cc:	c7 44 24 04 2c 04 00 	movl   $0x42c,0x4(%esp)
   d3:	00 
   d4:	c7 04 24 01 00 00 00 	movl   $0x1,(%esp)
   db:	89 44 24 08          	mov    %eax,0x8(%esp)
@@ -172,7 +172,7 @@ printf(int fd, const char *s, ...)
   for(; n > 0; n--){
     if(wait() < 0){
       printf(1, "wait stopped early\n");
-  e9:	c7 44 24 04 ef 03 00 	movl   $0x3ef,0x4(%esp)
+  e9:	c7 44 24 04 f7 03 00 	movl   $0x3f7,0x4(%esp)
   f0:	00 
   f1:	c7 04 24 01 00 00 00 	movl   $0x1,(%esp)
   f8:	e8 13 ff ff ff       	call   10 <printf>
@@ -183,7 +183,7 @@ printf(int fd, const char *s, ...)
 
   if(wait() != -1){
     printf(1, "wait got too many\n");
- 102:	c7 44 24 04 03 04 00 	movl   $0x403,0x4(%esp)
+ 102:	c7 44 24 04 0b 04 00 	movl   $0x40b,0x4(%esp)
  109:	00 
  10a:	c7 04 24 01 00 00 00 	movl   $0x1,(%esp)
  111:	e8 fa fe ff ff       	call   10 <printf>
@@ -815,3 +815,9 @@ SYSCALL(uptime)
  3da:	b8 0e 00 00 00       	mov    $0xe,%eax
  3df:	cd 40                	int    $0x40
  3e1:	c3                   	ret    
+
+000003e2 <kc>:
+SYSCALL(kc)
+ 3e2:	b8 16 00 00 00       	mov    $0x16,%eax
+ 3e7:	cd 40                	int    $0x40
+ 3e9:	c3                   	ret    

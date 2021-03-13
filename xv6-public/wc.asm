@@ -926,10 +926,12 @@ SYSCALL(uptime)
  44a:	b8 0e 00 00 00       	mov    $0xe,%eax
  44f:	cd 40                	int    $0x40
  451:	c3                   	ret    
- 452:	66 90                	xchg   %ax,%ax
- 454:	66 90                	xchg   %ax,%ax
- 456:	66 90                	xchg   %ax,%ax
- 458:	66 90                	xchg   %ax,%ax
+
+00000452 <kc>:
+SYSCALL(kc)
+ 452:	b8 16 00 00 00       	mov    $0x16,%eax
+ 457:	cd 40                	int    $0x40
+ 459:	c3                   	ret    
  45a:	66 90                	xchg   %ax,%ax
  45c:	66 90                	xchg   %ax,%ax
  45e:	66 90                	xchg   %ax,%ax

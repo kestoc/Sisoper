@@ -680,10 +680,12 @@ SYSCALL(uptime)
  32a:	b8 0e 00 00 00       	mov    $0xe,%eax
  32f:	cd 40                	int    $0x40
  331:	c3                   	ret    
- 332:	66 90                	xchg   %ax,%ax
- 334:	66 90                	xchg   %ax,%ax
- 336:	66 90                	xchg   %ax,%ax
- 338:	66 90                	xchg   %ax,%ax
+
+00000332 <kc>:
+SYSCALL(kc)
+ 332:	b8 16 00 00 00       	mov    $0x16,%eax
+ 337:	cd 40                	int    $0x40
+ 339:	c3                   	ret    
  33a:	66 90                	xchg   %ax,%ax
  33c:	66 90                	xchg   %ax,%ax
  33e:	66 90                	xchg   %ax,%ax
