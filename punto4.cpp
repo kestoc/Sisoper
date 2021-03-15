@@ -4,6 +4,39 @@
 
 using namespace std;
 
+vector<string> parse(string s){
+  vector<string> v;
+  istringstream ss(s);
+  string aux;
+
+  while( ss >> aux ){
+    v.push_back(aux);
+  }
+
+  return v;
+}
+
+string GetStdoutFromCommand2(string command) {
+  char buffer[1024];
+  string result = "";
+  // Open pipe to file
+  FILE* pipe = popen(command.c_str(), "r");
+  if (!pipe) {
+    return result;
+  }
+  // read till end of process:
+  while (!feof(pipe)) {
+    // use buffer to read and add to result
+    if (fgets(buffer, 1024, pipe) != NULL){
+      result = buffer;
+      result.erase(remove(result.begin(), result.end(), '\n'), result.end());
+      return result;
+    }
+  }
+  pclose(pipe);
+  return result;
+}
+
 vector<string> GetStdoutFromCommand(string command) {
    char buffer[1024];
    vector<string> ans;
@@ -63,19 +96,34 @@ int main(){
             char c;
             string s = "";
 
-            while( read(fd[0], &c, 1) > 0 ){
-                //Lee hasta EOF
+            while( read(fd[0], &c, 1) > 0 ){ //Lee hasta EOF
+                //Si aun no es el final de la cadena, almacena en un string
                 if(c != 0){
-                s += c;
+                    s += c;
                 }
                 else{
-                    //Recorro la cadena para hacer las comprobaciones y copiar en dir2
-                    for(int i = 0; i < s.size(); i++){
+                    if(s != ""){
+                        //Descompongo en un vector la informacion del archivo
+                        vector<string> line = parse(s);
+                        string fileAct = line[line.size()-1];
                         
+                        //Busco si el archivo esta en dir2
+                        string finded = GetStdoutFromCommand2("cd " + dir2 + " && ls -la " + fileAct);
+                        
+                        //Si no esta el archivo en dir2 lo copio desde dir1 a dir2
+                        if(finded == ""){
+                            string copy = "cp " + dir1 + "/" + fileAct + " " + dir2;
+                            system((char*)copy.c_str());
+                        }
+                        else{ //Si esta, busco dejar en dir2 el que tenga fecha de modificacion mas actual
+                            string condition = GetStdoutFromCommand2("[ " + dir1 + "/" + fileAct + " -nt " + dir2 + "/" + fileAct + " ] && echo \"yes\"");
+                            if(condition == "yes"){
+                              string newCopy = "rm " + dir2 + "/" + fileAct + " && cp " + dir1 + "/" + fileAct + " " + dir2;
+                              system((char*)newCopy.c_str());                            
+                            }
+                        }
                     }
-                cout << getpid()  << " Salida:\t" << s << endl;
-                //cout << s << endl;
-                s = "";
+                    s = "";
                 }
             }
             close(fd[0]);
